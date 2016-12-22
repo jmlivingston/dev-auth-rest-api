@@ -1,0 +1,64 @@
+{
+    "to-do": [
+        {
+            "id": 1,
+            "name": "TODO 1 - dev1",
+            "createdBy": "admin",
+            "createdById": 1,
+            "createdDate": "2016-01-01",
+            "modifiedBy": "admin",
+            "modifiedById": 1,
+            "modifiedDate": "2016-01-01"
+        },
+        {
+            "id": 2,
+            "name": "TODO 2 - dev1",
+            "createdBy": "editor",
+            "createdById": 2,
+            "createdDate": "2016-01-01",
+            "modifiedBy": "editor",
+            "modifiedById": 2,
+            "modifiedDate": "2016-01-01"
+        },
+        {
+            "id": 3,
+            "name": "TODO 3 - dev1",
+            "createdBy": "admin",
+            "createdById": 1,
+            "createdDate": "2016-01-01",
+            "modifiedBy": "admin",
+            "modifiedById": 1,
+            "modifiedDate": "2016-01-01"
+        },
+        {
+            "id": 4,
+            "name": "TODO 4 - dev1",
+            "createdBy": "restricted",
+            "createdById": 3,
+            "createdDate": "2016-01-01",
+            "modifiedBy": "restricted",
+            "modifiedById": 3,
+            "modifiedDate": "2016-01-01"
+        },
+        {
+            "id": 5,
+            "name": "TODO 5 - dev1",
+            "createdBy": "restricted",
+            "createdById": 3,
+            "createdDate": "2016-01-01",
+            "modifiedBy": "restricted",
+            "modifiedById": 3,
+            "modifiedDate": "2016-01-01"
+        },
+        {
+            "id": 6,
+            "name": "TODO 6 - dev1",
+            "createdBy": "readonly",
+            "createdById": 4,
+            "createdDate": "2016-01-01",
+            "modifiedBy": "readonly",
+            "modifiedById": 4,
+            "modifiedDate": "2016-01-01"
+        }
+    ]
+}

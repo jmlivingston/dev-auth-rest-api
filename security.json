@@ -1,0 +1,103 @@
+{
+    "errors": {
+        "GET": "You have not logged in or do not have sufficient permissions to view items. Please login or contact an administrator.",
+        "POST": "You have not logged in or do not have sufficient permissions to add an item. Please login or contact an administrator.",
+        "PUT": "YYou have not logged in or do not have sufficient permissions to update this item. Please login or contact an administrator.",
+        "DELETE": "You have not logged in or do not have sufficient permissions to delete this item. Please login or contact an administrator."
+    },
+    "paths": [
+        {
+            "path": "/to-do",
+            "access": {
+                "GET": {
+                    "users": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ],
+                    "userIdRestrictedRoles": [
+                        "restricted"
+                    ]
+                },
+                "POST": {
+                    "users": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ],
+                    "userIdRestrictedRoles": [
+                        "restricted",
+                        "readonly"
+                    ]
+                },
+                "PUT": {
+                    "users": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ],
+                    "userIdRestrictedRoles": [
+                        "restricted",
+                        "readonly"
+                    ]
+                },
+                "DELETE": {
+                    "users": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ],
+                    "userIdRestrictedRoles": [
+                        "restricted",
+                        "readonly",
+                        "editor"
+                    ]
+                }
+            }
+        },
+        {
+            "path": "/user-security",
+            "access": {
+                "GET": {
+                    "users": [
+                        1
+                    ],
+                    "userIdRestrictedRoles": [
+                        "admin"
+                    ]
+                },
+                "POST": {
+                    "users": [
+                        1
+                    ],
+                    "userIdRestrictedRoles": [
+                        "admin"
+                    ]
+                },
+                "PUT": {
+                    "users": [
+                        1,
+                        2,
+                        3
+                    ],
+                    "userIdRestrictedRoles": [
+                        "restricted",
+                        "readonly"
+                    ]
+                },
+                "DELETE": {
+                    "users": [
+                        1
+                    ],
+                    "userIdRestrictedRoles": [
+                        "admin"
+                    ]
+                }
+            }
+        }
+    ]
+}
