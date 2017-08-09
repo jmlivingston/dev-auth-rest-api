@@ -1,7 +1,7 @@
 var configHelper = require('./config.js');
 var express = require('express');
 var jwt = require('jsonwebtoken');
-var users = require('./data/dev1/collections/user-security.json');
+var users = require('./data/collections/user-security.json');
 var security = require('./security.json');
 
 var app = module.exports = express.Router();
@@ -85,7 +85,7 @@ for (var i = 0; i < security.paths.length; i++) {
                                 }
                                 break;
                             case 'DELETE':
-                                var db = require('./data/' + config.env + '/db.json');
+                                var db = require('./data/db.json');
                                 var id = parseInt(req.url.split('/')[1]);
                                 var collection = req.baseUrl.split('/')[1];
                                 var record = db[collection].filter(item => item.id === id)[0];

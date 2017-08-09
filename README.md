@@ -20,7 +20,7 @@
 
 ## Features
 
-- REST API - Based on json-server, with some security enhancements. Just drop a json file into the data\[environment]\collections folder to use.
+- REST API - Based on json-server, with some security enhancements. Just drop a json file into the data\collections folder to use.
 - Dev OAuth Backend Service - Allow developers to easily test security.
 
 ---
@@ -28,12 +28,11 @@
 ## Detailed Instructions
 
 - npm Scripts
-  - start - Shortcut to build and serve dev1
+  - start - Shortcut to build and serve
   - build - Creates db.json based on json files found in collections.
   - serve - starts the nodemon server
-  - dev1 and dev2 - These are shortcuts to build and start either dev1 or dev2 environments.
 - Files
-  - data\[environment]\collections - This is used for adding additional APIs - open the collections folder and create a json file like post.json or to-do.json. The next build will create a database based on these.
+  - data\collections - This is used for adding additional APIs - open the collections folder and create a json file like post.json or to-do.json. The next build will create a database based on these.
   - auth-routes.js - middleware integrated with json-server for OAuth routes.
   - build.js - created db.json based on data found in the collections folders.
   - config.js - provides base configuration for serving and building.

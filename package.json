@@ -2,12 +2,10 @@
   "name": "dev-api",
   "version": "1.0.1",
   "scripts": {
-    "start": "npm run dev1",
-    "start-with-tunnel": "npm run dev1 && npm run create-tunnel",
+    "start": "npm run build -- port:3001 && npm run serve -- port:3001",
+    "start-with-tunnel": "npm run && npm run create-tunnel",
     "build": "node build",
     "serve": "node serve",
-    "dev1": "npm run build -- port:3001 env:dev1 && npm run serve -- port:3001 env:dev1",
-    "dev2": "npm run build -- port:3002 env:dev2 && npm run serve -- port:3002 env:dev2",
     "create-tunnel": "ngrok tcp --remote-addr 1.tcp.ngrok.io:29182 3001"
   },
   "dependencies": {

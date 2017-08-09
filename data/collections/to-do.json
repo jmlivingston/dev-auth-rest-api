@@ -1,8 +1,8 @@
 {
-    "post": [
+    "to-do": [
         {
             "id": 1,
-            "name": "Post 1 - dev1",
+            "name": "TODO 1",
             "createdBy": "admin",
             "createdById": 1,
             "createdDate": "2016-01-01",
@@ -12,7 +12,7 @@
         },
         {
             "id": 2,
-            "name": "Post 2 - dev1",
+            "name": "TODO 2",
             "createdBy": "editor",
             "createdById": 2,
             "createdDate": "2016-01-01",
@@ -22,7 +22,7 @@
         },
         {
             "id": 3,
-            "name": "Post 3 - dev1",
+            "name": "TODO 3",
             "createdBy": "admin",
             "createdById": 1,
             "createdDate": "2016-01-01",
@@ -32,7 +32,7 @@
         },
         {
             "id": 4,
-            "name": "Post 4 - dev1",
+            "name": "TODO 4",
             "createdBy": "restricted",
             "createdById": 3,
             "createdDate": "2016-01-01",
@@ -42,7 +42,7 @@
         },
         {
             "id": 5,
-            "name": "Post 5 - dev1",
+            "name": "TODO 5",
             "createdBy": "restricted",
             "createdById": 3,
             "createdDate": "2016-01-01",
@@ -52,7 +52,7 @@
         },
         {
             "id": 6,
-            "name": "Post 6 - dev1",
+            "name": "TODO 6",
             "createdBy": "readonly",
             "createdById": 4,
             "createdDate": "2016-01-01",
