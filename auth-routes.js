@@ -36,7 +36,7 @@ const getUser = email => {
   }
 }
 
-app.post('/auth/get-token', function(req, res) {
+app.post('/auth/get-token', (req, res) => {
   if (!req.body.email || !req.body.password) {
     return res.status(400).send('You must send the e-mail and the password')
   }
@@ -54,10 +54,11 @@ app.post('/auth/get-token', function(req, res) {
   })
 })
 
+// TODO: Thie code is not the prettiest and could use some cleanup
 // User and Role Based Authentication
 for (let i = 0; i < security.paths.length; i++) {
   const pathDetails = security.paths[i]
-  app.use(pathDetails.path, function(req, res, next) {
+  app.use(pathDetails.path, (req, res, next) => {
     if (req.headers.authorization) {
       const decoded = jwt.verify(req.headers.authorization.split(' ')[1], config.clientSecret)
       const user = getUser(decoded.user.email)
