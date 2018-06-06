@@ -1,31 +1,36 @@
-var authRoutes = require('./auth-routes');
-var configHelper = require('./config.js');
-var jsonServer = require('json-server');
-var opn = require('opn');
+const enableDestroy = require('server-destroy')
+const fs = require('fs')
+const path = require('path')
 
-(() => {
+const authRoutes = require('./auth-routes')
+const config = require('./config').config
+const jsonServer = require('json-server')
+
+let server = jsonServer.create()
+
+let app = null
+
+const startServer = () => {
   try {
-    var argumentError = 'Error: port argument is required. Example: npm run serve -- port:3001';
-    var config = configHelper.getConfig();
-    if (config.port) {
-      var server = jsonServer.create();
-      var url = 'http://localhost:' + config.port;
-      server.use(jsonServer.defaults());
-      server.use(require('./auth-routes'));
-      server.use(jsonServer.router(config.baseDirectory + '/' + config.dbFile));
-      server.listen(config.port, function () {
-        console.log('Dev API running at: ' + url);
-        opn(url);
-      });
-      process.on('SIGINT', function () {
-        process.exit();
-      });
-    }
-    else {
-      throw argumentError;
-    }
+    const port = process.env.PORT || config.port
+    server = jsonServer.create()
+    server.use(jsonServer.defaults())
+    server.use(authRoutes)
+    server.use(jsonServer.router(path.join(__dirname, config.baseDirectory, config.dbFile)))
+    app = server.listen(port, function() {
+      console.log('API running at: ' + port)
+    })
+    enableDestroy(app)
+  } catch (error) {
+    console.log(error)
   }
-  catch (error) {
-    console.log(error);
+}
+
+startServer()
+
+fs.watch(path.join(__dirname, config.baseDirectory, config.dbFile), (e, file) => {
+  if (file) {
+    app.destroy()
+    startServer()
   }
-})()
+})

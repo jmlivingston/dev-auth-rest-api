@@ -1,45 +1,39 @@
 {
-    "user-security": [
-        {
-            "id": 1,
-            "pin": 12345,            
-            "userName": "admin",
-            "password": "admin",
-            "roleDescription": "Admin: I can administer the site.",
-            "role": "admin"            
-        },
-        {
-            "id": 2,
-            "pin": 23456,            
-            "userName": "editor",
-            "password": "editor",
-            "roleDescription": "Editor: I can view, add, and update anything. I can only delete my own.",
-            "role": "editor"            
-        },
-        {
-            "id": 3,            
-            "pin": 34567,            
-            "userName": "restricted",
-            "password": "restricted",
-            "roleDescription": "Restricted: I can only view, add, update only my own. I cannot delete anything.",
-            "role": "restricted"            
-        },
-        {
-            "id": 4,            
-            "pin": 45678,            
-            "userName": "readonly",
-            "password": "readonly",
-            "roleDescription": "Read Only - I can only view.",
-            "role": "readonly"            
-        },
-        {
-            "id": 5,            
-            "pin": 56789,            
-            "displayName": "No Avatar",
-            "userName": "noavatar",
-            "password": "noavatar",
-            "roleDescription": "Read Only - I can only view.",
-            "role": "readonly"
-        }
-    ]
+  "user-security": [
+    {
+      "id": 1,
+      "email": "admin@test.com",
+      "password": "test",
+      "roleDescription": "Admin: I can administer the site.",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "email": "editor@test.com",
+      "password": "test",
+      "roleDescription": "Editor: I can view, add, and update anything. I can only delete my own.",
+      "role": "editor"
+    },
+    {
+      "id": 3,
+      "email": "restricted@test.com",
+      "password": "test",
+      "roleDescription": "Restricted: I can only view, add, update only my own. I cannot delete anything.",
+      "role": "restricted"
+    },
+    {
+      "id": 4,
+      "email": "readonly@test.com",
+      "password": "test",
+      "roleDescription": "Read Only - I can only view.",
+      "role": "readonly"
+    },
+    {
+      "id": 5,
+      "email": "noavatar@test.com",
+      "password": "test",
+      "roleDescription": "Read Only - I can only view.",
+      "role": "readonly"
+    }
+  ]
 }
