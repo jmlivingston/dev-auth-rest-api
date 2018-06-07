@@ -34,6 +34,13 @@
       "password": "test",
       "roleDescription": "Read Only - I can only view.",
       "role": "readonly"
+    },
+    {
+      "id": 6,
+      "email": "adminja@test.com",
+      "password": "test",
+      "roleDescription": "Admin: I can administer the site in Japanese.",
+      "role": "admin"
     }
   ]
 }

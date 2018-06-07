@@ -14,7 +14,8 @@
             1,
             2,
             3,
-            4
+            4,
+            6
           ],
           "userIdRestrictedRoles": [
             "restricted"
@@ -25,7 +26,8 @@
             1,
             2,
             3,
-            4
+            4,
+            6
           ],
           "userIdRestrictedRoles": [
             "restricted",
@@ -37,7 +39,8 @@
             1,
             2,
             3,
-            4
+            4,
+            6
           ],
           "userIdRestrictedRoles": [
             "restricted",
@@ -49,7 +52,8 @@
             1,
             2,
             3,
-            4
+            4,
+            6
           ],
           "userIdRestrictedRoles": [
             "restricted",
@@ -64,7 +68,8 @@
       "access": {
         "GET": {
           "users": [
-            1
+            1,
+            6
           ],
           "userIdRestrictedRoles": [
             "admin"
@@ -72,7 +77,8 @@
         },
         "POST": {
           "users": [
-            1
+            1,
+            6
           ],
           "userIdRestrictedRoles": [
             "admin"
@@ -82,7 +88,8 @@
           "users": [
             1,
             2,
-            3
+            3,
+            6
           ],
           "userIdRestrictedRoles": [
             "restricted",
@@ -91,7 +98,8 @@
         },
         "DELETE": {
           "users": [
-            1
+            1,
+            6
           ],
           "userIdRestrictedRoles": [
             "admin"
