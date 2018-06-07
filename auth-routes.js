@@ -36,11 +36,11 @@ const getUser = email => {
   }
 }
 
-app.post('/auth/get-token', (req, res) => {
+app.post('/auth/login', (req, res) => {
   if (!req.body.email || !req.body.password) {
     return res.status(400).send('You must send the e-mail and the password')
   }
-  const user = getUser(req.body.email)
+  let user = getUser(req.body.email)
   if (!user) {
     return res.status(401).send('The e-mail does not exist.')
   }
@@ -49,8 +49,12 @@ app.post('/auth/get-token', (req, res) => {
       return res.status(401).send('The password is not correct.')
     }
   }
+  const { password, ...filteredUser } = user
   res.status(201).send({
-    auth_token: createToken(user)
+    user: {
+      token: createToken(filteredUser),
+      ...filteredUser
+    }
   })
 })
 

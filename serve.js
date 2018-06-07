@@ -15,6 +15,7 @@ const startServer = () => {
     const port = process.env.PORT || config.port
     server = jsonServer.create()
     server.use(jsonServer.defaults())
+    server.use(jsonServer.bodyParser)
     server.use(authRoutes)
     server.use(jsonServer.router(path.join(__dirname, config.baseDirectory, config.dbFile)))
     app = server.listen(port, function() {
@@ -28,9 +29,16 @@ const startServer = () => {
 
 startServer()
 
-fs.watch(path.join(__dirname, config.baseDirectory, config.dbFile), (e, file) => {
-  if (file) {
-    app.destroy()
-    startServer()
-  }
+const watchDirectories = [
+  path.join(__dirname, config.baseDirectory, config.dbFile),
+  path.join(__dirname, 'auth-routes.js'),
+  path.join(__dirname, 'security.json')
+]
+watchDirectories.forEach(directory => {
+  fs.watch(directory, (e, file) => {
+    if (file) {
+      app.destroy()
+      startServer()
+    }
+  })
 })
