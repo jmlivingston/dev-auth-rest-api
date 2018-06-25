@@ -36,7 +36,7 @@ const getUser = email => {
   }
 }
 
-app.post('/auth/login', (req, res) => {
+app.post('/auth/log-in', (req, res) => {
   if (!req.body.email || !req.body.password) {
     return res.status(400).send('You must send the e-mail and the password')
   }
@@ -52,19 +52,19 @@ app.post('/auth/login', (req, res) => {
   const { password, ...filteredUser } = user
   res.status(201).send({
     user: {
-      token: createToken(filteredUser),
+      authorizationToken: createToken(filteredUser),
       ...filteredUser
     }
   })
 })
 
-// TODO: Thie code is not the prettiest and could use some cleanup
-// User and Role Based Authentication
+// TODO: This code is not the prettiest and could use some cleanup
+// User and Role Based Authentication based on security.json
 for (let i = 0; i < security.paths.length; i++) {
   const pathDetails = security.paths[i]
   app.use(pathDetails.path, (req, res, next) => {
-    if (req.headers.authorization) {
-      const decoded = jwt.verify(req.headers.authorization.split(' ')[1], config.clientSecret)
+    if (req.headers.authorizationtoken !== 'undefined') {
+      const decoded = jwt.verify(req.headers.authorizationtoken, config.clientSecret)
       const user = getUser(decoded.user.email)
       const access = pathDetails.access[req.method]
       if (access && user.role !== 'admin') {
