@@ -9,6 +9,7 @@ const security = require('./security.json')
 let app = (module.exports = express.Router())
 
 const createToken = user => {
+  const date = Date.now()
   return jwt.sign(
     {
       user: {
@@ -17,7 +18,7 @@ const createToken = user => {
         roleDescription: user.roleDescription,
         role: user.role
       },
-      exp: Math.floor(Date.now() / 1000) + 60 * 60 // 60 * 60 = 1 Hour
+      exp: Math.floor(date / 1000) + 60 * 60 // 60 * 60 = 1 Hour
     },
     config.clientSecret
   )
@@ -64,45 +65,54 @@ for (let i = 0; i < security.paths.length; i++) {
   const pathDetails = security.paths[i]
   app.use(pathDetails.path, (req, res, next) => {
     if (req.headers.authorizationtoken !== 'undefined') {
-      const decoded = jwt.verify(req.headers.authorizationtoken, config.clientSecret)
-      const user = getUser(decoded.user.email)
-      const access = pathDetails.access[req.method]
-      if (access && user.role !== 'admin') {
-        if (access.users.indexOf(user.id) !== -1) {
-          if (access.userIdRestrictedRoles.indexOf(user.role) !== -1) {
-            switch (req.method) {
-              case 'GET':
-                req.query.createdById = user.id
-                next()
-                break
-              case 'POST':
-              case 'PUT':
-                if (req.body.user.id !== user.id || user.role === 'readonly') {
-                  res.status(403).send(security.errors[req.method])
-                } else {
+      try {
+        const decoded = jwt.verify(req.headers.authorizationtoken, config.clientSecret)
+        const user = getUser(decoded.user.email)
+        const access = pathDetails.access[req.method]
+        if (access && user.role !== 'admin') {
+          if (access.users.indexOf(user.id) !== -1) {
+            if (access.userIdRestrictedRoles.indexOf(user.role) !== -1) {
+              switch (req.method) {
+                case 'GET':
+                  req.query.createdById = user.id
                   next()
-                }
-                break
-              case 'DELETE':
-                const db = require(path.join(__dirname, config.baseDirectory, config.dbFile))
-                const id = parseInt(req.url.split('/')[1])
-                const collection = req.baseUrl.split('/')[1]
-                const record = db[collection].filter(item => item.id === id)[0]
-                if (record.createdById !== user.id || user.role === 'readonly') {
-                  res.status(403).send(security.errors[req.method])
-                } else {
-                  next()
-                }
-                break
+                  break
+                case 'POST':
+                case 'PUT':
+                  if (req.body.user.id !== user.id || user.role === 'readonly') {
+                    res.status(403).send(security.errors[req.method])
+                  } else {
+                    next()
+                  }
+                  break
+                case 'DELETE':
+                  const db = require(path.join(__dirname, config.baseDirectory, config.dbFile))
+                  const id = parseInt(req.url.split('/')[1])
+                  const collection = req.baseUrl.split('/')[1]
+                  const record = db[collection].filter(item => item.id === id)[0]
+                  if (record.createdById !== user.id || user.role === 'readonly') {
+                    res.status(403).send(security.errors[req.method])
+                  } else {
+                    next()
+                  }
+                  break
+              }
+            } else {
+              next()
             }
           } else {
-            next()
+            res.status(403).send(security.errors[req.method])
           }
         } else {
-          res.status(403).send(security.errors[req.method])
+          next()
         }
-      } else {
-        next()
+      } catch (error) {
+        if (error.name === 'TokenExpiredError') {
+          const decoded = jwt.decode(req.headers.authorizationtoken)
+          res.status(400).send({ ...error, authorizationToken: createToken(decoded.user) })
+        } else {
+          res.status(400).send(error)
+        }
       }
     } else {
       res.status(403).send('This API path requires authentication.')

@@ -3,62 +3,68 @@
     {
       "id": 1,
       "name": "TODO 1",
+      "isComplete": false,
       "createdBy": "admin@test.com",
       "createdById": 1,
-      "createdDate": "2018-06-06T19:56:59.386Z",
+      "created": "2018-06-06T19:56:59.386Z",
       "modifiedBy": "admin@test.com",
       "modifiedById": 1,
-      "modifiedDate": "2018-06-06T19:56:59.386Z"
+      "modified": "2018-06-06T19:56:59.386Z"
     },
     {
       "id": 2,
       "name": "TODO 2",
+      "isComplete": false,
       "createdBy": "editor@test.com",
       "createdById": 2,
-      "createdDate": "2018-06-06T19:56:59.386Z",
+      "created": "2018-06-06T19:56:59.386Z",
       "modifiedBy": "editor@test.com",
       "modifiedById": 2,
-      "modifiedDate": "2018-06-06T19:56:59.386Z"
+      "modified": "2018-06-06T19:56:59.386Z"
     },
     {
       "id": 3,
       "name": "TODO 3",
+      "isComplete": true,
       "createdBy": "admin@test.com",
       "createdById": 1,
-      "createdDate": "2018-06-06T19:56:59.386Z",
+      "created": "2018-06-06T19:56:59.386Z",
       "modifiedBy": "admin@test.com",
       "modifiedById": 1,
-      "modifiedDate": "2018-06-06T19:56:59.386Z"
+      "modified": "2018-06-06T19:56:59.386Z"
     },
     {
       "id": 4,
       "name": "TODO 4",
+      "isComplete": true,
       "createdBy": "restricted@test.com",
       "createdById": 3,
-      "createdDate": "2018-06-06T19:56:59.386Z",
+      "created": "2018-06-06T19:56:59.386Z",
       "modifiedBy": "restricted@test.com",
       "modifiedById": 3,
-      "modifiedDate": "2018-06-06T19:56:59.386Z"
+      "modified": "2018-06-06T19:56:59.386Z"
     },
     {
       "id": 5,
       "name": "TODO 5",
+      "isComplete": false,
       "createdBy": "restricted@test.com",
       "createdById": 3,
-      "createdDate": "2018-06-06T19:56:59.386Z",
+      "created": "2018-06-06T19:56:59.386Z",
       "modifiedBy": "restricted@test.com",
       "modifiedById": 3,
-      "modifiedDate": "2018-06-06T19:56:59.386Z"
+      "modified": "2018-06-06T19:56:59.386Z"
     },
     {
       "id": 6,
       "name": "TODO 6",
+      "isComplete": true,
       "createdBy": "readonly@test.com",
       "createdById": 4,
-      "createdDate": "2018-06-06T19:56:59.386Z",
+      "created": "2018-06-06T19:56:59.386Z",
       "modifiedBy": "readonly@test.com",
       "modifiedById": 4,
-      "modifiedDate": "2018-06-06T19:56:59.386Z"
+      "modified": "2018-06-06T19:56:59.386Z"
     }
   ]
 }
